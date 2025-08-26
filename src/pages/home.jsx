@@ -243,7 +243,8 @@ export default function Home() {
         <section id="hero" className="hero">
           <div className="hero-head-row">
             <ScrollReveal as="h1" className="hero-title">
-              Rapid, scalable & intelligent web experiences.
+              Rapid, scalable & intelligent web development.
+              
             </ScrollReveal>
             <ScrollReveal delay={80}>
               <img className="hero-photo" src="/new.JPG" alt="Kamar portrait" />
@@ -251,7 +252,7 @@ export default function Home() {
           </div>
 
           <ScrollReveal as="div" delay={140} className="hero-sub">
-            <p>
+            <p className="hero-para">
               focused on rapid prototyping, speed and shipping clean,
                 production‑ready features fast. Web Applications, Websites or anything  tech related.. just hit me up, let's work.
                 I'm open to any kind of work
@@ -289,11 +290,16 @@ export default function Home() {
         {/* ABOUT */}
         
         <section id="about" className="about section">
+  
           <div className="section-head">
-            <h2>About Me</h2><div className="section-accent" />
+            <br />
+            <br /> <br /> <br />
+            <h2> About Me</h2><div className="section-accent" />
           </div>
           <div className="about-grid about-grid-refined">
             <ScrollReveal className="about-text">
+              {/* Inline image only for mobile (floats right beside first lines) */}
+              <img className="about-inline-photo" src="/work.jpg" alt="Kamar" />
               <p>
                 Hello! I&apos;m <strong>Kamar</strong> — a tech‑savvy problem solver and AI enthusiast.
                 Co‑founder of <strong>Tourify</strong> and founder of <strong>QueueTrackr</strong>.
@@ -313,9 +319,10 @@ export default function Home() {
                 </a>
               </div>
             </ScrollReveal>
+            {/* Desktop / tablet media (hidden on small screens) */}
             <ScrollReveal className="about-media slim-media" delay={120}>
               <div className="futuristic-frame compact-frame">
-                <img src="/new.JPG" alt="Kamar working" />
+                <img src="/work.jpg" alt="Kamar working" />
               </div>
             </ScrollReveal>
           </div>

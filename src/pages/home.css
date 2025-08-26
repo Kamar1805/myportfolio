@@ -587,7 +587,7 @@
   .compact-frame {
     padding: .55rem;
     border-radius: 18px;
-    max-width: 220px;
+    max-width: 280px;
     width: 100%;
     background: var(--surface);
     display: flex;
@@ -596,9 +596,9 @@
   }
   .compact-frame img {
     width: 100%;
-    height: auto;
+    height: 280px;
     border-radius: 14px;
-    object-fit: cover;
+    
     aspect-ratio: 4/5;
   }
   
@@ -613,8 +613,8 @@
       grid-template-columns: 1fr 120px;
       gap: 1.4rem;
     }
-    .compact-frame { max-width: 120px; padding: .45rem; }
-    .compact-frame img { border-radius: 12px; }
+    .compact-frame { max-width: 100px; padding: .45rem; }
+    .compact-frame img { border-radius: 10px; }
     .about-text p { font-size: .9rem; }
   }
   
@@ -625,4 +625,213 @@
     .about-text p { font-size: .86rem; }
   }
   
+  /* ...existing code... */
+
+  /* ...existing code... */
+/* === ABOUT MOBILE INLINE IMAGE ADJUSTMENTS === */
+.about-inline-photo {
+    display: none;
+  }
+  
+  @media (max-width:640px){
+    /* Switch to single column; inline image handles side layout */
+    .about-grid-refined {
+      display: block !important;
+    }
+    .about-media { display: none !important; } /* hide separate media on mobile */
+    .about-inline-photo {
+      display: block;
+      float: right;
+      width: 105px;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 14px;
+      margin: 0 0 .4rem .9rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    /* First paragraph wraps around image; push following content below */
+    .about-text p + p {
+      clear: both;
+    }
+    .about-actions {
+      clear: both;
+      margin-top: 1.1rem;
+    }
+  }
+  
+  /* Ultra small tighten */
+  @media (max-width:420px){
+    .about-inline-photo {
+      width: 90px;
+      margin: 0 0 .35rem .75rem;
+      border-radius: 12px;
+    }
+  }
+  /* ...existing code... */
+
+  /* ...existing code... */
+
+/* === HERO DESKTOP REFINEMENT (raise heading, enlarge & align image) === */
+@media (min-width:1000px){
+    .hero{
+      padding-top:3.6rem; /* was 4.6rem: pulls hero higher */
+    }
+    .hero-head-row{
+      align-items:flex-start; /* align tops */
+    }
+    .hero-title{
+      margin-top:.25rem; /* slight nudge down so image + text visually align */
+    }
+    .hero-photo{
+      width:clamp(260px,32vw,360px); /* bigger desktop image */
+      margin-top:-.15rem; /* subtle upward shift to line with heading cap height */
+    }
+  }
+  
+  @media (min-width:1400px){
+    .hero{
+      padding-top:3.2rem;
+    }
+    .hero-photo{
+      width:360px;
+    }
+  }
+  /* ...existing code... */
+
+  .hero-para {
+    font-size: 24px;
+  }
+  @media (max-width:640px){
+    .hero-para  {font-size: 13px;}
+  }
+
+  /* ...existing code... */
+
+/* === HERO SPACING REFINEMENT (pull content upward & tighten bottom) === */
+/* Base (desktop & tablet) */
+.hero {
+    /* was: padding:4.6rem clamp(1rem,3vw,2.8rem) 3.3rem; */
+    padding:3.25rem clamp(1rem,3vw,2.4rem) 2.4rem;
+    min-height:min(600px, 100svh - var(--header-height)); /* slightly shorter so content sits higher */
+  }
+  .hero-head-row { margin-bottom:.9rem; } /* was 1.2rem */
+  .hero-sub { margin:0 0 1.3rem; }        /* was 1.8rem */
+  .hero-cta { margin:0 0 1.2rem; }        /* was 1.9rem */
+  .stats-row,
+  .stats-inline-mobile { margin-top:.2rem; }
+  
+  /* Large desktop already had a top reduction; keep but adjust to stay consistent */
+  @media (min-width:1000px){
+    .hero{
+      padding-top:2.9rem; /* was 3.6rem after previous tweak */
+      padding-bottom:2.6rem;
+    }
+    .hero-photo{
+      width:clamp(270px,31vw,380px); /* slightly larger */
+      margin-top:-.2rem;
+    }
+    .hero-title{
+      margin-top:.15rem;
+    }
+  }
+  
+  /* Ultra-wide */
+  @media (min-width:1400px){
+    .hero{
+      padding-top:2.6rem;
+    }
+    .hero-photo{
+      width:380px; /* was 360px */
+    }
+  }
+  
+  /* Mobile tightening */
+  @media (max-width:640px){
+    /* previously: padding-top:calc(var(--header-height) + 2rem); bottom 2.2rem via #hero override */
+    .hero{
+      padding:calc(var(--header-height) + .65rem) 1rem 1.1rem;
+      min-height:auto; /* allow natural height; removes extra bottom void */
+    }
+    .hero-head-row { gap:1.1rem; }
+    .hero-photo { width:clamp(95px,28vw,135px); }
+    .hero-sub { margin-bottom:1rem; }
+    .hero-cta { margin-bottom:.85rem; }
+    #hero { padding-bottom:0 !important; } /* neutralize earlier mobile override adding extra space */
+    .stats-inline-mobile { margin-top:.25rem; }
+  }
+  
+  /* Very small phones */
+  @media (max-width:460px){
+    .hero{
+      padding:calc(var(--header-height) + .5rem) .9rem .9rem;
+    }
+    .hero-photo { width:clamp(88px,30vw,120px); }
+    .hero-title { font-size:clamp(1.7rem,8.2vw,2.1rem); }
+    .hero-cta { gap:.65rem; }
+  }
+  
+  /* Optional micro-adjust for super narrow */
+  @media (max-width:380px){
+    .hero { padding:calc(var(--header-height) + .45rem) .8rem .85rem; }
+    .stats-inline-mobile { font-size:.58rem; }
+  }
+  
+  /* ...existing code... */
+
+  /* ...existing code... */
+
+/* === HERO COMPRESSION OVERRIDES (desktop spacing tighten) === */
+/* Place near end of file so it overrides earlier hero rules */
+@media (min-width:900px){
+    .hero{
+      /* Reduce top & bottom internal whitespace and let height shrink to content */
+      padding-top:2.25rem !important;   /* was 3.25rem / 3.6rem in earlier overrides */
+      padding-bottom:1.6rem !important; /* trims extra bottom void */
+      min-height:auto !important;       /* remove enforced min-height that created extra empty space */
+    }
+    .hero-head-row{
+      margin-bottom:.55rem !important;  /* tighter gap under heading row */
+    }
+    .hero-title{
+      margin-top:.05rem !important;     /* align with image cap height */
+    }
+    .hero-sub{
+      margin:0 0 .95rem !important;     /* closer to heading */
+    }
+    .hero-cta{
+      margin:0 0 .85rem !important;
+    }
+    .stats-row.desktop-stats{
+      margin-top:.15rem !important;
+    }
+  }
+  
+  /* Slight refinement for very wide screens */
+  @media (min-width:1400px){
+    .hero{
+      padding-top:2rem !important;
+      padding-bottom:1.5rem !important;
+    }
+  }
+  
+  /* Mobile: keep earlier tightening but pull everything further up a bit more */
+  @media (max-width:640px){
+    .hero{
+      padding-top:calc(var(--header-height) + .4rem) !important; /* was + .65rem */
+      padding-bottom:.75rem !important;
+    }
+    .hero-head-row{ margin-bottom:.55rem !important; }
+    .hero-sub{ margin-bottom:.8rem !important; }
+    .hero-cta{ margin-bottom:.7rem !important; }
+    .stats-inline-mobile{ margin-top:.2rem !important; }
+  }
+  
+  /* Ultra small phones */
+  @media (max-width:420px){
+    .hero{
+      padding-top:calc(var(--header-height) + .35rem) !important;
+      padding-bottom:.65rem !important;
+    }
+  }
   /* ...existing code... */
